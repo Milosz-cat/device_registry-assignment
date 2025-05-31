@@ -25,14 +25,38 @@ Setup
     rbenv global 3.2.3
     ```
 
-3. **Install gem dependencies:**
+## ## Setup verification (important requirement):
+
+To ensure that required steps are completed successfully you can run following commands:
+
+1.  **Setting up the proper Ruby version:**
+
+    ```bash
+    rbenv version # expected --> 3.2.3 (set by /home/milosz/projects/RubyOnRails/device_registry/.ruby-version)
+    ```
+
+2.  **Running bundle install:**
 
     ```bash
     gem install bundler
-    bundle install
+    bundle install # expected --> Bundle complete! X Gemfile dependencies, Y gems now installed.
+    ```  
+    
+3.  **Running rspec spec:**
+
+    ```bash
+    rspec # expected -->
     ```
 
-4. **Start the Rails server:**
+4.  **Running rake db:test:prepare:**
+
+    ```bash
+    rake db:test:prepare: # expected --> Nothing :)
+    ```
+
+## Usage
+
+1.  **Start the Rails server:**
 
     ```bash
     rails server
