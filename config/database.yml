@@ -5,6 +5,7 @@
 #   gem "sqlite3"
 #
 default: &default
+  adapter: sqlite3 # Fix based on log: "ActiveRecord::AdapterNotSpecified: database configuration does not specify adapter (ActiveRecord::AdapterNotSpecified)"
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
