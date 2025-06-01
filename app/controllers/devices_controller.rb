@@ -21,6 +21,8 @@ def unassign
   ).call
 
   head :ok
+rescue StandardError
+  render json: { error: 'Could not unassign device' }, status: :unprocessable_entity
 end
 
   private
