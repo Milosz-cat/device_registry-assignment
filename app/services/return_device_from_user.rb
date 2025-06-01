@@ -13,6 +13,8 @@ class ReturnDeviceFromUser
   def call
     device = Device.find_by(serial_number: @serial_number)
 
+    return unless device && device.owner_id == @requesting_user.id
+
     # Remove current ownership
     device.update!(owner_id: nil)
 
