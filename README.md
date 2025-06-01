@@ -110,6 +110,18 @@ The app should now be running at: http://127.0.0.1:3000
 
 ## Minimum Viable Product
 
+### Core Requirements (Implemented)
+- User can assign the device only to themself.
+- User can't assign the device already assigned to another user.
+- Only the user who assigned the device can return it.
+- If the user returned the device in the past, they can't ever re-assign the same device to themself.
+
+### Additional Features (Implemented)
+- List Assigned Devices per User
+- Device Ownership History
+- Device Assignment Limit per User
+- API Documentation (available at `http://localhost:3000/api-docs`)
+
 ## API Documentation
 
 Interactive documentation is available at http://localhost:3000/api-docs
@@ -119,6 +131,6 @@ How to regenerate Swagger documentation:
    ```bash
    rake rswag:specs:swaggerize
    ```
-   
+
  Remeber you must start the Rails server before that.
 
