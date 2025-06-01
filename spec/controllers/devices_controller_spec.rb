@@ -103,7 +103,12 @@ RSpec.describe DevicesController, type: :controller do
       end
     end
 
-
+    context 'when the user is not authenticated' do
+      it 'returns an unauthorized response' do
+        get :assigned
+        expect(response).to be_unauthorized
+      end
+    end
   end
 
 end
