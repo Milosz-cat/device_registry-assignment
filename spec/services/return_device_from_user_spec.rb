@@ -32,4 +32,22 @@ RSpec.describe ReturnDeviceFromUser do
       expect(ownership.returned_at).not_to be_nil
     end
   end
+  
+  context 'when user tries to return a device owned by someone else' do
+    let(:owner_user) { create(:user) }
+    let(:from_user_id) { owner_user.id }
+  
+    before do
+      device = create(:device, serial_number: serial_number, owner: owner_user)
+      create(:device_ownership, device: device, user: owner_user, assigned_at: 2.days.ago)
+    end
+  
+    it 'does not allow it and does not change ownership' do
+      expect {
+        return_device
+      }.not_to change {
+        Device.find_by(serial_number: serial_number).owner_id
+      }
+    end
+  end
 end
