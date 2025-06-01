@@ -89,7 +89,21 @@ RSpec.describe DevicesController, type: :controller do
     let!(:device1) { create(:device, serial_number: 'abc123', owner: user) }
     let!(:device2) { create(:device, serial_number: 'def456', owner: user) }
     let!(:device3) { create(:device, serial_number: 'ghi789', owner: create(:user)) }
-    
+
+    context 'when the user is authenticated' do
+      it 'returns a list of devices assigned to the current user' do
+        get_assigned
+        expect(response).to be_successful
+
+        json = JSON.parse(response.body)
+        serials = json.map { |d| d['serial_number'] }
+
+        expect(serials).to contain_exactly('abc123', 'def456')
+        expect(serials).not_to include('ghi789')
+      end
+    end
+
+
   end
 
 end
