@@ -10,7 +10,16 @@ Rswag::Ui.configure do |c|
 
   c.swagger_endpoint '/api-docs/v1/swagger.yaml', 'API V1 Docs'
 
-  # Add Basic Auth in case your API is private
-  # c.basic_auth_enabled = true
-  # c.basic_auth_credentials 'username', 'password'
+  # Set defoult hosta to localhost:3000 (HTTP, no HTTPS)
+  c.config_object[:urls] = [
+    {
+      url: '/api-docs/v1/swagger.yaml',
+      name: 'API V1 Docs',
+      variables: {
+        defaultHost: {
+          default: 'localhost:3000'
+        }
+      }
+    }
+  ]
 end
