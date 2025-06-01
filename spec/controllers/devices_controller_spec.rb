@@ -121,6 +121,29 @@ RSpec.describe DevicesController, type: :controller do
       create(:device_ownership, device: device, user: user2, assigned_at: 1.day.ago, returned_at: nil)
     end
 
-  end
+    context 'when the device exists' do
+      it 'returns the full ownership history for the device' do
+        get :device_history, params: { serial_number: device.serial_number }
   
+        expect(response).to be_successful
+        data = JSON.parse(response.body)
+  
+        expect(data.length).to eq(2)
+  
+        expect(data[0]).to include(
+          'user_id' => user1.id,
+          'assigned_at' => kind_of(String),
+          'returned_at' => kind_of(String)
+        )
+  
+        expect(data[1]).to include(
+          'user_id' => user2.id,
+          'assigned_at' => kind_of(String),
+          'returned_at' => nil
+        )
+      end
+    end
+
+  end
+
 end
