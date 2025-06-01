@@ -31,4 +31,29 @@ RSpec.describe 'Devices API', type: :request do
       end
     end
   end
+
+  path '/unassign' do
+    post 'Unassign a device from current user' do
+      tags 'Devices'
+      consumes 'application/json'
+      parameter name: :unassign_request, in: :body, schema: {
+        type: :object,
+        properties: {
+          device: {
+            type: :object,
+            properties: {
+              serial_number: { type: :string }
+            },
+            required: ['serial_number']
+          }
+        },
+        required: ['device']
+      }
+
+      response '200', 'device unassigned' do
+        let(:unassign_request) { { device: { serial_number: '123456' } } }
+        run_test!
+      end
+    end
+  end
 end
