@@ -43,6 +43,41 @@ RSpec.describe DevicesController, type: :controller do
   end
 
   describe 'POST #unassign' do
-    # TODO: implement the tests for the unassign action
+    let(:serial_number) { '123456' } # Use a shared serial number for consistency in tests
+    let!(:device) { create(:device, serial_number: serial_number, owner: user) } # Create a device assigned to the user — required for the unassign logic to work
+
+    subject(:unassign) do
+      post :unassign,
+          params: { device: { serial_number: serial_number } },
+          session: { token: user.api_keys.first.token }
+    end
+
+    context 'when the user is authenticated' do # test are based on POST #assign test above
+      context 'when user unassigns their own device' do
+        before do
+          create(:device_ownership, device: device, user: user, assigned_at: 1.day.ago) # Create a device_ownership record — this is required by the ReturnDeviceFromUser service
+        end
+
+        it 'returns a success response' do
+          unassign
+          expect(response).to be_successful
+        end
+      end
+
+      context 'when user tries to unassign a device without ownership' do
+        it 'returns an error response' do
+          unassign
+          expect(response.code).to eq("422")
+          expect(JSON.parse(response.body)).to eq({ 'error' => 'Could not unassign device' })
+        end
+      end
+    end
+
+    context 'when the user is not authenticated' do
+      it 'returns an unauthorized response' do
+        post :unassign, params: { device: { serial_number: serial_number } }
+        expect(response).to be_unauthorized
+      end
+    end
   end
 end
