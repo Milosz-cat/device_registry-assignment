@@ -80,4 +80,16 @@ RSpec.describe DevicesController, type: :controller do
       end
     end
   end
+
+  describe 'GET #assigned' do
+    subject(:get_assigned) do
+      get :assigned, session: { token: user.api_keys.first.token }
+    end
+
+    let!(:device1) { create(:device, serial_number: 'abc123', owner: user) }
+    let!(:device2) { create(:device, serial_number: 'def456', owner: user) }
+    let!(:device3) { create(:device, serial_number: 'ghi789', owner: create(:user)) }
+    
+  end
+
 end
