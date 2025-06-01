@@ -144,6 +144,15 @@ RSpec.describe DevicesController, type: :controller do
       end
     end
 
+    context 'when the device does not exist' do
+      it 'returns a 404 error' do
+        get :device_history, params: { serial_number: 'NONEXISTENT123' }
+  
+        expect(response).to have_http_status(:not_found)
+        expect(JSON.parse(response.body)).to eq({ 'error' => 'Device not found' })
+      end
+    end
+
   end
 
 end
