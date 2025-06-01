@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
-  has_many :owned_devices, class_name: 'Device', foreign_key: :owner_id, dependent: :nullify
+  has_many :devices, class_name: 'Device', foreign_key: :owner_id, dependent: :nullify
 
   has_many :device_ownerships, dependent: :destroy
   has_many :historically_owned_devices, through: :device_ownerships, source: :device
