@@ -13,7 +13,7 @@
 
 ```bash
 git clone https://github.com/Milosz-cat/device_registry-assignment.git
-cd device_registry
+cd device_registry-assignment
 ```
 
 ### 2. **Install rbenv (if not installed)**
