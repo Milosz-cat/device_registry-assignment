@@ -8,10 +8,8 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 WORKDIR /rails
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+ENV RAILS_ENV="development" \
+    BUNDLE_WITHOUT=""
 
 
 # Throw-away build stage to reduce size of final image
@@ -52,8 +50,9 @@ RUN useradd rails --create-home --shell /bin/bash && \
 USER rails:rails
 
 # Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT []
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+# Start server with migration (for dev only; ephemeral)
+CMD ["sh", "-c", "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p 3000"]
