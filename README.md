@@ -18,11 +18,44 @@ Setup
    cd device_registry
    ```
 
-2. **Install Ruby 3.2.3 using rbenv:**
+2. **Install rbenv (if not installed):**
+
+    ```bash
+    # Ubuntu/Debian
+    sudo apt install rbenv ruby-build
+    ```
+
+    ```bash
+    # macOS (Homebrew)
+    brew install rbenv
+
+### Initialize rbenv (depending on your shell)
+
+    ```bash
+    # For bash (Linux default)
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+    ```bash
+    # For zsh (macOS default)
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+    source ~/.zshrc
+    ```
+
+3. **Install Ruby 3.2.3 using rbenv:**
 
     ```bash
     rbenv install 3.2.3
     rbenv global 3.2.3
+    ```
+
+4. **Install bundle using rbenv:**
+
+    ```bash
+    gem install bundler
     ```
 
 ## Setup verification (important requirements):
@@ -38,7 +71,6 @@ To ensure that required steps are completed successfully you can run following c
 2.  **Running bundle install:**
 
     ```bash
-    gem install bundler
     bundle install # expected --> Bundle complete! X Gemfile dependencies, Y gems now installed.
     ```  
     
@@ -64,6 +96,6 @@ To ensure that required steps are completed successfully you can run following c
     rails s
     ```
 
-The app should now be running at: http://localhost:3000
+The app should now be running at: http://127.0.0.1:3000
 
 ## Minimum Viable Product
