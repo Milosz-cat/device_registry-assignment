@@ -30,6 +30,21 @@ class DevicesController < ApplicationController
     render json: devices.as_json(only: [:id, :serial_number])
   end
 
+  def device_history
+    device = Device.find_by(serial_number: params[:serial_number])
+    return render json: { error: 'Device not found' }, status: :not_found unless device
+  
+    history = device.device_ownerships.order(assigned_at: :asc).map do |ownership|
+      {
+        user_id: ownership.user_id,
+        assigned_at: ownership.assigned_at,
+        returned_at: ownership.returned_at
+      }
+    end
+  
+    render json: history
+  end
+
   private
 
   def device_params
