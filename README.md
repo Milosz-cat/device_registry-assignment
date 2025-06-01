@@ -134,6 +134,11 @@ How to regenerate Swagger documentation:
 
  Remeber you must start the Rails server before that.
 
+ 
+### Documentation Preview
+
+![Documentation](preview/Screenshot%202025-06-01%20222912.png)
+
 ## UML Model Diagram Preview
 
-![UML Diagram](model_diagram.png)
+![UML Diagram](preview/model_diagram.png)
