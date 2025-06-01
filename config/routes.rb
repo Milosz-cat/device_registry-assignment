@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   scope '/api' do
     post :assign, to: 'devices#assign'
     post :unassign, to: 'devices#unassign'
+    get :assigned, to: 'devices#assigned'
   end
 end
