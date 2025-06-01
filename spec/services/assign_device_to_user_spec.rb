@@ -80,5 +80,15 @@ RSpec.describe AssignDeviceToUser do
         new_device_owner_id: requesting_user.id
       ).call
     end
+  
+    it 'raises an error when assigning another device' do
+      expect {
+        AssignDeviceToUser.new(
+          requesting_user: requesting_user,
+          serial_number: serial_number_2,
+          new_device_owner_id: requesting_user.id
+        ).call
+      }.to raise_error(AssigningError::AssignmentLimitReached)
+    end
   end
 end
