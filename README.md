@@ -34,8 +34,7 @@ Setup
     # Install ruby-build plugin
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
     ```
-
-    #### macOS (using Homebrew):
+#### macOS (using Homebrew):
 
     ```bash
     brew install rbenv
@@ -48,7 +47,7 @@ Setup
     source ~/.zshrc
     ```
 
-    a system restart may be required
+    System restart may be required
     
 3. **Install Ruby 3.2.3 using rbenv:**
 
