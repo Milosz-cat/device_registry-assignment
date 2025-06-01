@@ -111,4 +111,16 @@ RSpec.describe DevicesController, type: :controller do
     end
   end
 
+  describe 'GET #device_history' do
+    let(:device) { create(:device, serial_number: 'ABC123') }
+    let(:user1) { create(:user) }
+    let(:user2) { create(:user) }
+
+    before do
+      create(:device_ownership, device: device, user: user1, assigned_at: 3.days.ago, returned_at: 2.days.ago)
+      create(:device_ownership, device: device, user: user2, assigned_at: 1.day.ago, returned_at: nil)
+    end
+
+  end
+  
 end
