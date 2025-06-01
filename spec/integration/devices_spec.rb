@@ -68,4 +68,21 @@ RSpec.describe 'Devices API', type: :request do
     end
   end
 
+  path '/device_history/{serial_number}' do
+    get 'Get ownership history for a device' do
+      tags 'Devices'
+      produces 'application/json'
+      parameter name: :serial_number, in: :path, type: :string
+
+      response '200', 'ownership history returned' do
+        let(:serial_number) { '123456' }
+        run_test!
+      end
+
+      response '404', 'device not found' do
+        let(:serial_number) { 'nonexistent' }
+        run_test!
+      end
+    end
+  end
 end
