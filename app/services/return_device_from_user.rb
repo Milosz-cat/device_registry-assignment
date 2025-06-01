@@ -4,8 +4,8 @@
 # Assigning should be blocked if a user already had the device in the past,
 # so we must mark the previous ownership as "returned".
 class ReturnDeviceFromUser
-  def initialize(user:, serial_number:, from_user:)
-    @user = user
+  def initialize(requesting_user:, serial_number:, from_user:)
+    @requesting_user = requesting_user
     @serial_number = serial_number
     @from_user = from_user
   end
