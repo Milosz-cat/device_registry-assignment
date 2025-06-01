@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_31_184821) do
     t.datetime "updated_at", null: false
     t.integer "owner_id"
     t.integer "previous_owner_id"
-    t.index ["serial_number"], name: "index_devices_on_serial_number"
+    t.index ["serial_number"], name: "index_devices_on_serial_number", unique: true
   end
 
   create_table "users", force: :cascade do |t|
