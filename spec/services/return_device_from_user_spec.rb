@@ -32,7 +32,7 @@ RSpec.describe ReturnDeviceFromUser do
       expect(ownership.returned_at).not_to be_nil
     end
   end
-  
+
   context 'when user tries to return a device owned by someone else' do
     let(:owner_user) { create(:user) }
     let(:from_user_id) { owner_user.id }
@@ -48,6 +48,30 @@ RSpec.describe ReturnDeviceFromUser do
       }.not_to change {
         Device.find_by(serial_number: serial_number).owner_id
       }
+    end
+  end
+
+  context 'when user returns a device and then tries to re-assign it again' do
+    let(:from_user_id) { requesting_user.id }
+  
+    before do
+      AssignDeviceToUser.new(
+        requesting_user: requesting_user,
+        serial_number: serial_number,
+        new_device_owner_id: requesting_user.id
+      ).call
+  
+      return_device
+    end
+  
+    it 'does not allow to assign it again' do
+      expect {
+        AssignDeviceToUser.new(
+          requesting_user: requesting_user,
+          serial_number: serial_number,
+          new_device_owner_id: requesting_user.id
+        ).call
+      }.to raise_error(AssigningError::AlreadyUsedOnUser)
     end
   end
 end
