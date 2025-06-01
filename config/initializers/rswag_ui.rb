@@ -8,7 +8,7 @@ Rswag::Ui.configure do |c|
   # (under openapi_root) as JSON or YAML endpoints, then the list below should
   # correspond to the relative paths for those endpoints.
 
-  c.swagger_endpoint '/api-docs/v1/swagger.yaml', 'API V1 Docs'
+  c.openapi_endpoint '/api-docs/v1/swagger.yaml', 'API V1 Docs'
 
   # Set defoult hosta to localhost:3000 (HTTP, no HTTPS)
   c.config_object[:urls] = [
