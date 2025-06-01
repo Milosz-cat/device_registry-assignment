@@ -74,4 +74,14 @@ RSpec.describe ReturnDeviceFromUser do
       }.to raise_error(AssigningError::AlreadyUsedOnUser)
     end
   end
+
+  context 'when device with given serial number does not exist' do
+    let(:from_user_id) { requesting_user.id }
+  
+    it 'raises a specific error' do
+      expect {
+        return_device
+      }.to raise_error(ReturnError::DeviceNotFound)
+    end
+  end
 end
