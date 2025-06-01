@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Ruby 3.2.3 (zalecane przez `rbenv`)
+- Ruby 3.2.3 (recommended by `rbenv`)
 - Bundler
 
 ---
@@ -25,7 +25,7 @@ Setup
     rbenv global 3.2.3
     ```
 
-## ## Setup verification (important requirement):
+## Setup verification (important requirements):
 
 To ensure that required steps are completed successfully you can run following commands:
 
@@ -45,13 +45,13 @@ To ensure that required steps are completed successfully you can run following c
 3.  **Running rspec spec:**
 
     ```bash
-    rspec # expected -->
+    rspec # expected --> Finished in ... seconds ... 11 examples, 0 failures
     ```
 
 4.  **Running rake db:test:prepare:**
 
     ```bash
-    rake db:test:prepare: # expected --> Nothing :)
+    rake db:test:prepare # expected --> Nothing :)
     ```
 
 ## Usage

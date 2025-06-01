@@ -18,7 +18,8 @@ RSpec.describe DevicesController, type: :controller do
         let(:new_owner_id) { create(:user).id }
 
         it 'returns an unauthorized response' do
-          expect(response.code).to eq(422)
+          assign # Without this the response would be empty, and by plain logic if context is "when user assigns a device..." we need to call the action
+          expect(response.code).to eq("422") # test returns response.code as a string, so the test compares "422", not 422 (Integer)
           expect(JSON.parse(response.body)).to eq({ 'error' => 'Unauthorized' })
         end
       end
