@@ -64,45 +64,47 @@ cd device_registry-assignment
 
 To ensure that required steps are completed successfully you can run following commands:
 
-1.  **Setting up the proper Ruby version:**
+### 1.  **Setting up the proper Ruby version:**
 
-    ```bash
-    rbenv version # expected --> 3.2.3 (set by /home/milosz/projects/RubyOnRails/device_registry/.ruby-version)
-    ```
+   ```bash
+   rbenv version # expected --> 3.2.3 (set by /home/milosz/projects/RubyOnRails/device_registry/.ruby-version)
+   ```
 
-2.  **Running bundle install:**
+### 2.  **Running bundle install:**
 
-    ```bash
-    bundle install # expected --> Bundle complete! X Gemfile dependencies, Y gems now installed.
-    ```  
+   ```bash
+   bundle install # expected --> Bundle complete! X Gemfile dependencies, Y gems now installed.
+   ```  
 
-2.  **Running migration:**
+### 2.  **Running migration:**
 
-    ```bash
-     rails db:migrate
-    ```  
+   ```bash
+    rails db:migrate
+   ```  
 
-3.  **Running rspec spec:**
+### 3.  **Running rspec spec:**
 
-    ```bash
-    rspec # expected --> Finished in ... seconds ... 11 examples, 0 failures
-    ```
+   ```bash
+   rspec # expected --> Finished in ... seconds ... 11 examples, 0 failures
+   ```
 
-4.  **Running rake db:test:prepare:**
+### 4.  **Running rake db:test:prepare:**
 
-    ```bash
-    rake db:test:prepare # expected --> Nothing :)
-    ```
+   ```bash
+   rake db:test:prepare # expected --> Nothing :)
+   ```
 
 ## Usage
 
-1.  **Start the Rails server:**
+### 1.  **Start the Rails server:**
 
-    ```bash
-    rails server
-    # or shortcut
-    rails s
-    ```
+   ```bash
+   rails server
+   ```
+   or shortcut
+   ```bash
+   rails s
+   ```
 
 The app should now be running at: http://127.0.0.1:3000
 
