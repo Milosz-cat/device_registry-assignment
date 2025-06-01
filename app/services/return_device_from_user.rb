@@ -13,7 +13,9 @@ class ReturnDeviceFromUser
   def call
     device = Device.find_by(serial_number: @serial_number)
 
-    return unless device && device.owner_id == @requesting_user.id
+    raise ReturnError::DeviceNotFound unless device
+
+    return unless device.owner_id == @requesting_user.id
 
     # Remove current ownership
     device.update!(owner_id: nil)
@@ -24,7 +26,9 @@ class ReturnDeviceFromUser
                      .order(assigned_at: :desc)
                      .first
 
+    raise ReturnError::OwnershipNotFound unless ownership                 
+
     # Mark it as returned if found
-    ownership.update!(returned_at: Time.current) if ownership
+    ownership.update!(returned_at: Time.current)
   end
 end
