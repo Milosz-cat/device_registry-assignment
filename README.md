@@ -105,6 +105,9 @@ To ensure that required steps are completed successfully you can run following c
    ```bash
    rails s
    ```
+
+The app should now be running at: http://127.0.0.1:3000
+
 ## Running with Docker:
 
 If you don't want to run the app locally, you can run the app using Docker.
@@ -122,8 +125,6 @@ docker run -p 3000:3000 device-registry
 ```
 
 This will run database migrations and start the Rails server in development mode, listening on http://localhost:3000.
-
-The app should now be running at: http://127.0.0.1:3000
 
 ## Minimum Viable Product
 
