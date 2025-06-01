@@ -67,4 +67,18 @@ RSpec.describe AssignDeviceToUser do
       end
     end
   end
+
+  context 'when user has reached their device assignment limit' do
+    let(:requesting_user) { create(:user, device_assignment_limit: 1) }
+    let(:serial_number_1) { 'ABC001' }
+    let(:serial_number_2) { 'ABC002' }
+  
+    before do
+      AssignDeviceToUser.new(
+        requesting_user: requesting_user,
+        serial_number: serial_number_1,
+        new_device_owner_id: requesting_user.id
+      ).call
+    end
+  end
 end
