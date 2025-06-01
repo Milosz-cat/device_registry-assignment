@@ -60,6 +60,24 @@ cd device_registry-assignment
  gem install bundler
  ```
 
+## Running with Docker:
+
+If you don't want to run the app locally, you can run the app using Docker.
+
+### 1. **Build the image**
+
+```bash
+docker build -t device-registry .
+```
+
+### 2. **Run the container**
+
+```bash
+docker run -p 3000:3000 device-registry
+```
+
+This will run database migrations and start the Rails server in development mode, listening on http://localhost:3000.
+
 ## Setup verification (important requirements):
 
 To ensure that required steps are completed successfully you can run following commands:
