@@ -29,7 +29,7 @@ Setup
     # macOS (Homebrew)
     brew install rbenv
 
-### Initialize rbenv (depending on your shell)
+2.1 **Initialize rbenv (depending on your shell):**
 
     ```bash
     # For bash (Linux default)
