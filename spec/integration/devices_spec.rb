@@ -56,4 +56,16 @@ RSpec.describe 'Devices API', type: :request do
       end
     end
   end
+
+  path '/assigned' do
+    get 'List all devices assigned to current user' do
+      tags 'Devices'
+      produces 'application/json'
+
+      response '200', 'list of assigned devices' do
+        run_test!
+      end
+    end
+  end
+
 end
