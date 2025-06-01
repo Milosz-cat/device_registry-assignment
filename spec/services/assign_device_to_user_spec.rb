@@ -31,25 +31,25 @@ RSpec.describe AssignDeviceToUser do
       expect(user.devices.pluck(:serial_number)).to include(serial_number)
     end
 
-context 'when a user tries to register a device that was already assigned to and returned by the same user' do
-  before do
-    assign_device
-    ReturnDeviceFromUser.new(requesting_user: user, serial_number: serial_number, from_user: user.id).call
-  end
-  
-  # Previous version used `assign_device` which was likely evaluated before this block,
-  # causing the error to be missed. We now instantiate the service directly inside the
-  # `expect` block to ensure the error is raised at the right moment.
-  it 'does not allow to register' do
-    expect {
-      described_class.new(
-        requesting_user: user,
-        serial_number: serial_number,
-        new_device_owner_id: user.id
-      ).call
-    }.to raise_error(AssigningError::AlreadyUsedOnUser)
-  end
-end
+    context 'when a user tries to register a device that was already assigned to and returned by the same user' do
+      before do
+        assign_device
+        ReturnDeviceFromUser.new(requesting_user: user, serial_number: serial_number, from_user: user.id).call
+      end
+      
+      # Previous version used `assign_device` which was likely evaluated before this block,
+      # causing the error to be missed. We now instantiate the service directly inside the
+      # `expect` block to ensure the error is raised at the right moment.
+      it 'does not allow to register' do
+        expect {
+          described_class.new(
+            requesting_user: user,
+            serial_number: serial_number,
+            new_device_owner_id: user.id
+          ).call
+        }.to raise_error(AssigningError::AlreadyUsedOnUser)
+        end
+      end
 
     context 'when user tries to register device that is already assigned to other user' do
       let(:other_user) { create(:user) }
