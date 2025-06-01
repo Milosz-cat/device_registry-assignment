@@ -18,34 +18,38 @@ Setup
    cd device_registry
    ```
 
-2. **Install rbenv (if not installed):**
+### 2. **Install rbenv (if not installed)**
+
+#### Ubuntu/Debian:
 
     ```bash
-    # Ubuntu/Debian
-    sudo apt install rbenv ruby-build
-    ```
+    # Install rbenv
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 
-    ```bash
-    # macOS (Homebrew)
-    brew install rbenv
-    ```
-    
-   **Initialize rbenv (depending on your shell):**
-
-    ```bash
-    # For bash (Linux default)
+    # Add rbenv to PATH
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
     source ~/.bashrc
+
+    # Install ruby-build plugin
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    ```
+
+    #### macOS (using Homebrew):
+
+    ```bash
+    brew install rbenv
     ```
 
     ```bash
-    # For zsh (macOS default)
+    # For zsh (default on macOS)
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
     echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
     source ~/.zshrc
     ```
 
+    a system restart may be required
+    
 3. **Install Ruby 3.2.3 using rbenv:**
 
     ```bash
@@ -74,7 +78,13 @@ To ensure that required steps are completed successfully you can run following c
     ```bash
     bundle install # expected --> Bundle complete! X Gemfile dependencies, Y gems now installed.
     ```  
-    
+
+2.  **Running migration:**
+
+    ```bash
+     rails db:migrate
+    ```  
+
 3.  **Running rspec spec:**
 
     ```bash
