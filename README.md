@@ -117,11 +117,11 @@ The app should now be running at: http://127.0.0.1:3000
 - If the user returned the device in the past, they can't ever re-assign the same device to themself.
 
 ### Additional Features (Implemented)
-- List Assigned Devices per User
-- Device Ownership History
+- List Assigned Devices per User - new endpoint (GET /assigned)
+- Device Ownership History - new endpoint (GET /device_history/{serial_number})
 - Device Assignment Limit per User
-- API Documentation (available at `http://localhost:3000/api-docs`)
-
+- basic API Documentation
+  
 ## API Documentation
 
 Interactive documentation is available at http://localhost:3000/api-docs
