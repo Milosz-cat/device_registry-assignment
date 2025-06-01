@@ -14,7 +14,7 @@ Setup
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Milosz-cat/device_registry.git
+   git clone https://github.com/Milosz-cat/device_registry-assignment.git
    cd device_registry
    ```
 
