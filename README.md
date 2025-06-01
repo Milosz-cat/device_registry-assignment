@@ -109,3 +109,16 @@ To ensure that required steps are completed successfully you can run following c
 The app should now be running at: http://127.0.0.1:3000
 
 ## Minimum Viable Product
+
+## API Documentation
+
+Interactive documentation is available at http://localhost:3000/api-docs
+
+How to regenerate Swagger documentation:
+
+   ```bash
+   rake rswag:specs:swaggerize
+   ```
+   
+ Remeber you must start the Rails server before that.
+
