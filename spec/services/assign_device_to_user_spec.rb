@@ -34,7 +34,7 @@ RSpec.describe AssignDeviceToUser do
 context 'when a user tries to register a device that was already assigned to and returned by the same user' do
   before do
     assign_device
-    ReturnDeviceFromUser.new(user: user, serial_number: serial_number, from_user: user.id).call
+    ReturnDeviceFromUser.new(requesting_user: user, serial_number: serial_number, from_user: user.id).call
   end
   
   # Previous version used `assign_device` which was likely evaluated before this block,

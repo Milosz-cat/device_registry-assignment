@@ -13,9 +13,17 @@ class DevicesController < ApplicationController
     render json: { error: 'Unauthorized' }, status: :unprocessable_entity
   end
 
-  def unassign
-    # TODO: implement the unassign action
-  end
+def unassign
+  ReturnDeviceFromUser.new(
+    requesting_user: current_user,
+    serial_number: params.dig(:device, :serial_number),
+    from_user: current_user.id
+  ).call
+
+  head :ok
+rescue StandardError
+  render json: { error: 'Could not unassign device' }, status: :unprocessable_entity
+end
 
   private
 
