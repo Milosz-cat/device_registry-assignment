@@ -11,54 +11,54 @@
 
 ### 1. **Clone the repository:**
 
-   ```bash
-   git clone https://github.com/Milosz-cat/device_registry-assignment.git
-   cd device_registry
-   ```
+```bash
+git clone https://github.com/Milosz-cat/device_registry-assignment.git
+cd device_registry
+```
 
 ### 2. **Install rbenv (if not installed)**
 
 #### Ubuntu/Debian:
 
-    ```bash
-    # Install rbenv
-    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+ ```bash
+ # Install rbenv
+ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 
-    # Add rbenv to PATH
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-    echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
-    source ~/.bashrc
+ # Add rbenv to PATH
+ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+ echo 'eval "$(rbenv init - bash)"' >> ~/.bashrc
+ source ~/.bashrc
 
-    # Install ruby-build plugin
-    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-    ```
+ # Install ruby-build plugin
+ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+ ```
 #### macOS (using Homebrew):
 
-    ```bash
-    brew install rbenv
-    ```
+ ```bash
+ brew install rbenv
+ ```
 
-    ```bash
-    # For zsh (default on macOS)
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-    echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
-    source ~/.zshrc
-    ```
+ ```bash
+ # For zsh (default on macOS)
+ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+ echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+ source ~/.zshrc
+ ```
 
-    System restart may be required
-    
+ System restart may be required
+ 
 ### 3. **Install Ruby 3.2.3 using rbenv:**
 
-    ```bash
-    rbenv install 3.2.3
-    rbenv global 3.2.3
-    ```
+ ```bash
+ rbenv install 3.2.3
+ rbenv global 3.2.3
+ ```
 
 ### 4. **Install bundle using rbenv:**
 
-    ```bash
-    gem install bundler
-    ```
+ ```bash
+ gem install bundler
+ ```
 
 ## Setup verification (important requirements):
 
