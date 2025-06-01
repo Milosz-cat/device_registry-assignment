@@ -84,4 +84,19 @@ RSpec.describe ReturnDeviceFromUser do
       }.to raise_error(ReturnError::DeviceNotFound)
     end
   end
+
+  context 'when device has no active ownership record for the user' do
+    let(:from_user_id) { requesting_user.id }
+  
+    before do
+      create(:device, serial_number: serial_number, owner: requesting_user)
+      # No ownership record created for the user
+    end
+  
+    it 'raises an error indicating missing ownership' do
+      expect {
+        return_device
+      }.to raise_error(ReturnError::OwnershipNotFound)
+    end
+  end
 end
