@@ -9,9 +9,7 @@
 
 ## Installation setup
 
-Setup
-
-1. **Clone the repository:**
+### 1. **Clone the repository:**
 
    ```bash
    git clone https://github.com/Milosz-cat/device_registry-assignment.git
@@ -49,14 +47,14 @@ Setup
 
     System restart may be required
     
-3. **Install Ruby 3.2.3 using rbenv:**
+### 3. **Install Ruby 3.2.3 using rbenv:**
 
     ```bash
     rbenv install 3.2.3
     rbenv global 3.2.3
     ```
 
-4. **Install bundle using rbenv:**
+### 4. **Install bundle using rbenv:**
 
     ```bash
     gem install bundler
