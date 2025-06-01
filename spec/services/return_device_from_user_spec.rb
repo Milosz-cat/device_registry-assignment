@@ -13,4 +13,23 @@ RSpec.describe ReturnDeviceFromUser do
 
   let(:requesting_user) { create(:user) }
   let(:serial_number) { '987654' }
+
+  context 'when user returns a device they currently own' do
+    let(:from_user_id) { requesting_user.id }
+
+    before do
+      device = create(:device, serial_number: serial_number, owner: requesting_user)
+      create(:device_ownership, device: device, user: requesting_user, assigned_at: 1.day.ago)
+    end
+
+    it 'clears the owner_id and sets returned_at on ownership' do
+      return_device
+
+      device = Device.find_by(serial_number: serial_number)
+      expect(device.owner_id).to be_nil
+
+      ownership = device.device_ownerships.order(assigned_at: :desc).first
+      expect(ownership.returned_at).not_to be_nil
+    end
+  end
 end
